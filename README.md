@@ -40,11 +40,19 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] What is the purpose of using _sessions_?
 
+  > You can use sessions to communicate data to middleware that's executed later, or to retrieve it later on, on subsequent requests.
+
 - [ ] What does bcrypt do to help us store passwords in a secure manner.
+
+  > Converts the password to a hash.
 
 - [ ] What does bcrypt do to slow down attackers?
 
+  > A hashed password takes a great deal more processing power to hack.
+
 - [ ] What are the three parts of the JSON Web Token?
+
+  > Header, Payload, and Signature
 
 ## Minimum Viable Product
 
