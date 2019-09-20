@@ -24,6 +24,7 @@ router.post("/login", (req, res) => {
   Users.findBy({ username })
     .first()
     .then(user => {
+      //console.log(user);
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = generateToken(user); // new line
 
@@ -41,5 +42,20 @@ router.post("/login", (req, res) => {
       res.status(500).json(error);
     });
 });
+
+function generateToken(user) {
+  const payload = {
+    subject: user.id, // sub in payload is what the token is about
+    username: user.username
+    // ...otherData
+  };
+
+  const options = {
+    expiresIn: "1d" // show other available options in the library's documentation
+  };
+
+  // extract the secret away so it can be required and used where needed
+  return jwt.sign(payload, secrets.jwtSecret, options); // this method is synchronous
+}
 
 module.exports = router;
